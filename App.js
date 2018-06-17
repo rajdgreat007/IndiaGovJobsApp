@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, Dimensions, FlatList } from 'react-native';
+import { StyleSheet, View, Dimensions, ActivityIndicator } from 'react-native';
+import Posts from './components/Posts';
 
 const WP_REQUEST_URL_POSTS = "http://indiagovjobs.com/wp-json/wp/v2/posts";
 
@@ -30,30 +31,19 @@ export default class App extends React.Component {
 
   renderLoadingView = () =>{
     return (
-      <View style={styles.container}>
-        <Text>Loading...</Text>
-      </View>
+      <ActivityIndicator />
     );
   };
 
   renderPosts = () => {
     let posts = this.state.posts;
-    return (
-      <View style={styles.container}>
-        <FlatList
-          data={posts}
-          renderItem={({item}) => <Text style={styles.item}>{item.title}</Text>}
-        />
-      </View>
-    );
+    return <Posts posts={posts} />
   };
 
   render() {
-    if(this.state.posts.length === 0){
-      return this.renderLoadingView();
-    }else{
-      return this.renderPosts();
-    } 
+    return <View style={styles.container}>
+      {this.state.posts.length === 0 ? this.renderLoadingView() : this.renderPosts()}
+    </View>
   }
 }
 
@@ -65,11 +55,5 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     paddingTop : 22
   },
-  item: {
-    padding: 10,
-    fontSize: 18,
-    margin : 10,
-    backgroundColor : "green",
-    color : "#fff"
-  },
+
 });
