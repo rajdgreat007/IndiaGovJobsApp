@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Dimensions, ActivityIndicator } from 'react-native';
 import Posts from './components/Posts';
 
-const WP_REQUEST_URL_POSTS = "http://indiagovjobs.com/wp-json/wp/v2/posts";
+const WP_REQUEST_URL_POSTS = "https://indiagovjobs.com/wp-json/wp/v2/posts";
 
 const windowSize = Dimensions.get('window');
 
@@ -29,12 +29,6 @@ export default class App extends React.Component {
     }
   }
 
-  renderLoadingView = () =>{
-    return (
-      <ActivityIndicator />
-    );
-  };
-
   renderPosts = () => {
     let posts = this.state.posts;
     return <Posts posts={posts} />
@@ -42,7 +36,7 @@ export default class App extends React.Component {
 
   render() {
     return <View style={styles.container}>
-      {this.state.posts.length === 0 ? this.renderLoadingView() : this.renderPosts()}
+      {this.state.posts.length === 0 ? <ActivityIndicator /> : this.renderPosts()}
     </View>
   }
 }
