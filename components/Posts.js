@@ -1,13 +1,13 @@
 import React from 'react';
-import { Text, View, FlatList, StyleSheet, TouchableNativeFeedback, Alert } from 'react-native';
+import { Text, View, FlatList, StyleSheet, TouchableNativeFeedback } from 'react-native';
 
-const onPress = () => {
-    Alert.alert('You pressed the button!')
+const onPress = (item, navigate) => {
+    navigate('PostDetails', item);
 }
 
-const post = (item) => {
+const post = (item, navigate) => {
     return (
-        <TouchableNativeFeedback onPress={onPress}>
+        <TouchableNativeFeedback onPress={() => {onPress(item, navigate)}}>
             <Text style={styles.item}>{item.title}</Text>
         </TouchableNativeFeedback>
     );
@@ -17,7 +17,7 @@ const Posts = (props) => {
     return (
         <FlatList
             data={props.posts}
-            renderItem={({item}) => post(item)}
+            renderItem={({item}) => post(item, props.navigate)}
         /> 
     );
 }
