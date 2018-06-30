@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View, Dimensions, ActivityIndicator } from 'react-native';
 import Posts from '../components/Posts';
 
-const WP_REQUEST_URL_POSTS = "https://indiagovjobs.com/wp-json/wp/v2/posts?per_page=20";
+const WP_REQUEST_URL_POSTS = "https://indiagovjobs.com/wp-json/wp/v2/posts?_embed&per_page=20";
 
 export default class PostListScreen extends React.Component {
 
@@ -26,9 +26,14 @@ export default class PostListScreen extends React.Component {
   }
 
   mapPosts = (post) => {
+    let imagePath = null;
+    try{
+      imagePath = post['_embedded']['wp:featuredmedia'][0]['media_details']['sizes']['thumbnail']['source_url'];
+    }catch(e){}
     return {
-      key: post.id,
-      title : post.title.rendered
+      key: post.id.toString(),
+      title : post.title.rendered,
+      imagePath : imagePath
     }
   }
 

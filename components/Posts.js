@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, FlatList, StyleSheet, TouchableNativeFeedback } from 'react-native';
+import { Text, View, FlatList, StyleSheet, TouchableNativeFeedback, Image } from 'react-native';
 
 const onPress = (item, navigate) => {
     navigate('PostDetails', item);
@@ -8,7 +8,13 @@ const onPress = (item, navigate) => {
 const post = (item, navigate) => {
     return (
         <TouchableNativeFeedback onPress={() => {onPress(item, navigate)}}>
-            <Text style={styles.item}>{item.title}</Text>
+            <View style={styles.postContainer}>
+                <View style={{width : '20%'}}>
+                    <Image source={{uri: item.imagePath}}
+                        style={styles.image} />    
+                </View>
+                <Text style={styles.text}>{item.title}</Text>
+            </View>
         </TouchableNativeFeedback>
     );
 }
@@ -24,11 +30,26 @@ const Posts = (props) => {
 export default Posts;
 
 const styles = StyleSheet.create({
-    item: {
-        padding: 10,
-        fontSize: 18,
+    postContainer : {
+        flex : 1,
+        flexDirection : 'row',
         margin : 10,
-        backgroundColor : "green",
-        color : "#fff"
+        justifyContent : 'space-between',
+        borderWidth : 2,
+        borderRadius : 5,
+        borderColor : 'green'
+
     },
+    text: {
+        padding: 10,
+        fontSize: 16,
+        color : "#000",
+        width: '80%',
+        backgroundColor : 'lightgreen'
+    },
+    image: {
+        flex: 1,
+        resizeMode: 'contain'
+    }
+    
 });
