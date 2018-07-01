@@ -7,7 +7,10 @@ const onPress = (item, navigate) => {
 
 const post = (item, navigate) => {
     return (
-        <TouchableNativeFeedback onPress={() => {onPress(item, navigate)}}>
+        <TouchableNativeFeedback
+        onPress = {() => {onPress(item, navigate)}}
+        background = {TouchableNativeFeedback.SelectableBackground()}
+        >
             <View style={styles.postContainer}>
                 <View style={{width : '20%'}}>
                     <Image source={{uri: item.imagePath}}
