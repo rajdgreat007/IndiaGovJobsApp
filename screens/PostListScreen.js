@@ -2,7 +2,8 @@ import React from 'react';
 import { StyleSheet, View, Dimensions, ActivityIndicator } from 'react-native';
 import Posts from '../components/Posts';
 
-const WP_REQUEST_URL_POSTS = "https://indiagovjobs.com/wp-json/wp/v2/posts?_embed&per_page=20";
+const WP_REQUEST_URL_POSTS = "https://indiagovjobs.com/wp-json/wp/v2/posts?_embed";
+const WP_POSTS_PER_PAGE = 10;
 
 export default class PostListScreen extends React.Component {
 
@@ -15,14 +16,35 @@ export default class PostListScreen extends React.Component {
     this.state ={
       posts : []
     };
+    this.loading = false;
+    this.page = 1;
+  }
+
+  fetchPosts = params =>{
+    if(!this.loading){
+      this.loading = true;
+      if(params && params.refetch){
+        this.page = 1;
+      }
+      const requestUrl = WP_REQUEST_URL_POSTS + '&per_page='+ WP_POSTS_PER_PAGE + '&page=' + this.page;
+      fetch(requestUrl)
+      .then(res => res.json())
+      .then(posts => {
+        this.loading = false;
+        let newPosts = posts.map(this.mapPosts);
+        this.page++;
+        this.setState((prevState, props)=>{
+          if(params && params.loadMore){
+            newPosts = prevState.posts.concat(newPosts);
+          }
+          return {posts : newPosts}
+        })
+      });
+    }
   }
 
   componentDidMount(){
-    fetch(WP_REQUEST_URL_POSTS)
-    .then(res => res.json())
-    .then(posts => this.setState((prevState, props)=>{
-      return {posts : posts.map(this.mapPosts)}
-    }))
+    this.fetchPosts();
   }
 
   mapPosts = (post) => {
@@ -39,7 +61,13 @@ export default class PostListScreen extends React.Component {
 
   renderPosts = () => {
     let posts = this.state.posts;
-    return <Posts posts = {posts} navigate = {this.props.navigation.navigate}/>
+    return <Posts 
+      posts = {posts} 
+      navigate = {this.props.navigation.navigate}
+      loading = {this.loading}
+      refetch = {()=>this.fetchPosts({refetch:true})}
+      loadMore = {()=>this.fetchPosts({loadMore : true})}
+    />
   };
 
   render() {

@@ -24,6 +24,9 @@ const Posts = (props) => {
         <FlatList
             data={props.posts}
             renderItem={({item}) => post(item, props.navigate)}
+            refreshing = {props.loading}
+            onRefresh = {props.refetch}
+            onEndReached = {props.loadMore}
         /> 
     );
 }
