@@ -7,8 +7,11 @@ const WP_REQUEST_URL_POSTDETAIL = 'https://indiagovjobs.com/wp-json/wp/v2/posts/
 
 export default class PostDetailsScreen extends React.Component {
 
-    static navigationOptions = {
-      title : 'Post Details'
+    static navigationOptions = ({navigation}) => {
+      const title = navigation.getParam('title');
+      return {
+        title : (title && title.replace(/–.*/,'')) || 'Job Details'
+      }
     };
 
     constructor(props){
