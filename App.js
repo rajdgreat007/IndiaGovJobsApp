@@ -15,12 +15,13 @@ const App = createStackNavigator(
   {
     navigationOptions : {
       headerStyle: {
-        backgroundColor: 'lightgreen',
+        backgroundColor: '#6A5ACD',
       },
       headerTitle : <Header showLogo = {true} />,
       headerTitleStyle: {
         fontWeight: 'bold',
-      }
+      },
+      headerTintColor: '#fff'
     }
   }
 );

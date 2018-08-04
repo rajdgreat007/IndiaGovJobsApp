@@ -10,7 +10,7 @@ export default class PostDetailsScreen extends React.Component {
     static navigationOptions = ({navigation}) => {
       const title = navigation.getParam('title');
       return {
-        title : (title && title.replace(/–.*/,'')) || 'Job Details'
+        headerTitle : <Header showTitle = {true} title = {(title && title.replace(/–.*/,'')) || 'Job Details'}/>
       }
     };
 

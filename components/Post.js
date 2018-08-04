@@ -5,7 +5,7 @@ import HTML from 'react-native-render-html';
 
 const tagsStyles = {
     p : {
-        marginBottom : 10
+        marginBottom : 10,
     },
     li : {
         marginBottom : 5
@@ -39,10 +39,8 @@ export default Post;
 const styles = StyleSheet.create({
     post: {
         padding: 10,
-        backgroundColor : 'lightgreen',
+        backgroundColor : '#ccc',
         margin : 10,
-        borderRadius : 5,
-        borderWidth : 2,
-        borderColor : 'green'
+        borderColor : 'grey',
     },
 });

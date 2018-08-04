@@ -39,19 +39,18 @@ const styles = StyleSheet.create({
     postContainer : {
         flex : 1,
         flexDirection : 'row',
-        margin : 10,
+        marginHorizontal : 10,
+        marginVertical: 5,
         justifyContent : 'space-between',
-        borderWidth : 2,
-        borderRadius : 5,
-        borderColor : 'green'
-
+        borderWidth : 1,
+        borderColor : 'grey',
     },
     text: {
         padding: 10,
-        fontSize: 16,
-        color : "#000",
+        fontSize: 18,
+        color: "#000",
         width: '80%',
-        backgroundColor : 'lightgreen'
+        backgroundColor : '#ccc'
     },
     image: {
         flex: 1,
