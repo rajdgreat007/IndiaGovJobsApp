@@ -7,7 +7,7 @@ import {
 export const BannerAd = (props) => {
     return (
         <AdMobBanner 
-            adSize = "fullBanner"
+            adSize = "smartBanner"
             adUnitID = {props.adUnitID}
             testDeviceID="EMULATOR"
         />

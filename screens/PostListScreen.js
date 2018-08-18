@@ -74,6 +74,7 @@ export default class PostListScreen extends React.Component {
   render() {
     return <View style={styles.container}>
       <BannerAd adUnitID = "ca-app-pub-2719503145852588/5952775236" />
+      {/* <BannerAd adUnitID = "ca-app-pub-3940256099942544/6300978111" /> */}
       {this.state.posts.length === 0 ? <ActivityIndicator /> : this.renderPosts()}
     </View>
   }

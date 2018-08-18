@@ -9,7 +9,10 @@ const onPress = (item, navigate) => {
 const post = (item, navigate, index) => {
     return (
         <View>
-            {(index + 1) % 4 === 0 ? <View style={styles.postContainer}><BannerAd adUnitID = "ca-app-pub-2719503145852588/5337593335" /></View> : null}
+            {(index + 1) % 4 === 0 ? <View style={styles.postContainer}>
+                <BannerAd adUnitID = "ca-app-pub-2719503145852588/5337593335" />
+                {/* <BannerAd adUnitID = "ca-app-pub-3940256099942544/6300978111" /> */}
+            </View> : null}
             <TouchableNativeFeedback
                 onPress={() => { onPress(item, navigate) }}
                 background={TouchableNativeFeedback.SelectableBackground()}

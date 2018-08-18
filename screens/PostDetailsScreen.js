@@ -43,7 +43,7 @@ export default class PostDetailsScreen extends React.Component {
     return <View style={styles.container}>
       <BannerAd adUnitID="ca-app-pub-2719503145852588/5952775236" />
       {this.state.post ? this.renderPost() : <ActivityIndicator />}
-      <BannerAd adUnitID="ca-app-pub-2719503145852588/1500088977" />
+      <BannerAd adUnitID="ca-app-pub-2719503145852588/1500088977" />      
     </View>
   }
 }
