@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, View, Dimensions, ActivityIndicator } from 'react-native';
 import Posts from '../components/Posts';
+import {BannerAd} from '../components/Ads';
 
 const WP_REQUEST_URL_POSTS = "https://indiagovjobs.com/wp-json/wp/v2/posts?_embed";
 const WP_POSTS_PER_PAGE = 10;
@@ -72,6 +73,7 @@ export default class PostListScreen extends React.Component {
 
   render() {
     return <View style={styles.container}>
+      <BannerAd adUnitID = "ca-app-pub-2719503145852588/5952775236" />
       {this.state.posts.length === 0 ? <ActivityIndicator /> : this.renderPosts()}
     </View>
   }
@@ -83,7 +85,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingTop : 22
+    paddingTop : 5
   },
 
 });

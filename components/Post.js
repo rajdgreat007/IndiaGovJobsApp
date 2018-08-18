@@ -2,6 +2,7 @@ import React from 'react';
 import { Text, StyleSheet, ScrollView, Dimensions, Linking } from 'react-native';
 //import { parseDOM } from './helpers/post-helpers';
 import HTML from 'react-native-render-html';
+import { BannerAd } from './Ads';
 
 const tagsStyles = {
     p : {
