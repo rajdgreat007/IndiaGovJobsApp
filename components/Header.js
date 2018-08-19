@@ -1,6 +1,5 @@
 import React from 'react';
 import {View, Image, Text, StyleSheet} from 'react-native';
-import Logo from '../images/igv-logo.png';
 
 export default Header = (props) => {
     const logoMarkup = (
