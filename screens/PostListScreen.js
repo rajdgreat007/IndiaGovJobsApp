@@ -1,5 +1,6 @@
 import React from 'react';
 import { StyleSheet, View, Dimensions, ActivityIndicator } from 'react-native';
+import OneSignal from 'react-native-onesignal'; // Import package from node modules
 import Posts from '../components/Posts';
 import {BannerAd} from '../components/Ads';
 
@@ -42,6 +43,10 @@ export default class PostListScreen extends React.Component {
         })
       });
     }
+  }
+
+  componentWillMount() {
+    OneSignal.init("615a66b4-f74b-461d-b45e-1871c3ae7f33");
   }
 
   componentDidMount(){

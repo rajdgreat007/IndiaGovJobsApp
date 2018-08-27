@@ -22,6 +22,7 @@
     "react-native": "~0.55.2",
     "react-native-admob": "^2.0.0-beta.5",
     "react-native-html-parser": "0.0.5",
+    "react-native-onesignal": "^3.2.6",
     "react-native-render-html": "^3.10.0",
     "react-navigation": "^2.3.1"
   }
