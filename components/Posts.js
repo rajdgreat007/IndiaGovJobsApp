@@ -22,7 +22,7 @@ const post = (item, navigate, index) => {
                         <Image source={{ uri: item.imagePath }}
                             style={styles.image} />
                     </View>
-                    <Text style={styles.text}>{item.title}</Text>
+                    <Text style={styles.text}>{item.title.replace('&#038;', '&')}</Text>
                 </View>
             </TouchableNativeFeedback>
         </View>

@@ -1,11 +1,14 @@
 import React from 'react';
-import { StyleSheet, View, Dimensions, ActivityIndicator } from 'react-native';
+import { StyleSheet, View, Dimensions, ActivityIndicator, Alert } from 'react-native';
 import OneSignal from 'react-native-onesignal'; // Import package from node modules
+import firebase from 'react-native-firebase';
 import Posts from '../components/Posts';
 import {BannerAd} from '../components/Ads';
+import {storeData, retrieveData} from '../components/helpers/async-storage';
 
 const WP_REQUEST_URL_POSTS = "https://indiagovjobs.com/wp-json/wp/v2/posts?_embed";
 const WP_POSTS_PER_PAGE = 10;
+const WP_REGISTER_DEVICE_URL = "https://indiagovjobs.com/wp-json/apnwp/register?os_type=android&device_token=";
 
 export default class PostListScreen extends React.Component {
 
@@ -21,6 +24,21 @@ export default class PostListScreen extends React.Component {
     this.loading = false;
     this.page = 1;
   }
+
+  saveDeviceId = params => {
+    if(!retrieveData('deviceId')) {
+      firebase.messaging().getToken()
+      .then(fcmToken => {
+        if (fcmToken) {
+          const requestUrl = WP_REGISTER_DEVICE_URL + fcmToken;
+          fetch(requestUrl)
+          .then(res => storeData('deviceId', '1'))
+        } else {
+          // user doesn't have a device token yet
+        } 
+      });
+    }
+  };
 
   fetchPosts = params =>{
     if(!this.loading){
@@ -47,6 +65,7 @@ export default class PostListScreen extends React.Component {
 
   componentWillMount() {
     OneSignal.init("615a66b4-f74b-461d-b45e-1871c3ae7f33");
+    this.saveDeviceId();
   }
 
   componentDidMount(){
