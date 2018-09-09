@@ -26,18 +26,23 @@ export default class PostListScreen extends React.Component {
   }
 
   saveDeviceId = params => {
-    if(!retrieveData('deviceId')) {
-      firebase.messaging().getToken()
-      .then(fcmToken => {
-        if (fcmToken) {
-          const requestUrl = WP_REGISTER_DEVICE_URL + fcmToken;
-          fetch(requestUrl)
-          .then(res => storeData('deviceId', '1'))
-        } else {
-          // user doesn't have a device token yet
-        } 
-      });
-    }
+    const callback = (error, result) => {
+      if(error || !result){
+        firebase.messaging().getToken()
+        .then(fcmToken => {
+          if (fcmToken) {
+            const requestUrl = WP_REGISTER_DEVICE_URL + fcmToken;
+            fetch(requestUrl)
+            .then(res => {
+              storeData('deviceId', '1');
+            })
+          } else {
+            // user doesn't have a device token yet
+          } 
+        });
+      }
+    };
+    retrieveData('deviceId', callback);
   };
 
   fetchPosts = params =>{
