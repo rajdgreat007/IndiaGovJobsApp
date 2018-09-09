@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "196380622832",
+    "firebase_url": "https://indiagovjobsappnotifications.firebaseio.com",
+    "project_id": "indiagovjobsappnotifications",
+    "storage_bucket": "indiagovjobsappnotifications.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:196380622832:android:026bcbb629c4aa93",
+        "android_client_info": {
+          "package_name": "com.indiagovjobsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "196380622832-grcguaeg12g2tj5anlfqjmbfgq21bc8f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.indiagovjobsapp",
+            "certificate_hash": "879f23a079be409310e7d52b15aa3691e10b9340"
+          }
+        },
+        {
+          "client_id": "196380622832-7q1r0tm16va15lgoi11k3pu1li8i6jig.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAyY-CCcCXmG_7XRToCpwvVrZUWwoIRGjU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "196380622832-7q1r0tm16va15lgoi11k3pu1li8i6jig.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
