@@ -5,6 +5,7 @@ import android.app.Application;
 import com.facebook.react.ReactApplication;
 import io.invertase.firebase.RNFirebasePackage;
 import io.invertase.firebase.messaging.RNFirebaseMessagingPackage;
+import io.invertase.firebase.notifications.RNFirebaseNotificationsPackage;
 import com.geektime.rnonesignalandroid.ReactNativeOneSignalPackage;
 import com.sbugert.rnadmob.RNAdMobPackage;
 import com.facebook.react.ReactNativeHost;
@@ -30,7 +31,8 @@ public class MainApplication extends Application implements ReactApplication {
             new RNFirebasePackage(),
             new ReactNativeOneSignalPackage(),
             new RNAdMobPackage(),
-            new RNFirebaseMessagingPackage()
+            new RNFirebaseMessagingPackage(),
+            new RNFirebaseNotificationsPackage()
       );
     }
 
