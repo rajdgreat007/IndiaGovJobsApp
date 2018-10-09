@@ -141,11 +141,11 @@ export default class PostListScreen extends React.Component {
       // Get the action triggered by the notification being opened
       //const action = notificationOpen.action;
       // Get information about the notification that was opened
-      const notification: Notification = notificationOpen.notification;
-      this.props.navigation.navigate('PostDetails', {
-        key: '1719',
-        title: 'yo title'
-      });
+      //const notification: Notification = notificationOpen.notification;
+      // this.props.navigation.navigate('PostDetails', {
+      //   key: '1719',
+      //   title: 'yo title'
+      // });
       //Alert.alert('notification opened fg');
       
     });

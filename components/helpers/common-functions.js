@@ -10,10 +10,8 @@ export const createNotificationForDisplay = (message) => {
             .setBody(data.message)
             .setSound('default')
             .setData({
-                id: data.postId,
-                title: data.postId
+                id: data.postId
             })
-            .setSubtitle(data.postId)
             .android.setPriority(firebase.notifications.Android.Priority.High)
             .android.setChannelId('alert');
     }
