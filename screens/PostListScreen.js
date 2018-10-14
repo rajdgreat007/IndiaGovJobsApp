@@ -122,7 +122,8 @@ export default class PostListScreen extends React.Component {
     this.fetchPosts();
     this.messageListener = firebase.messaging().onMessage((message: RemoteMessage) => {
       const newNotification = createNotificationForDisplay(message);
-      return firebase.notifications().displayNotification(newNotification);
+      return firebase.notifications().displayNotification(newNotification)
+      .catch(err=>console.log(err));
     });
 
     this.notificationDisplayedListener = firebase.notifications().onNotificationDisplayed((notification: Notification) => {
@@ -141,13 +142,13 @@ export default class PostListScreen extends React.Component {
       // Get the action triggered by the notification being opened
       //const action = notificationOpen.action;
       // Get information about the notification that was opened
-      //const notification: Notification = notificationOpen.notification;
+      const notification: Notification = notificationOpen.notification;
       // this.props.navigation.navigate('PostDetails', {
       //   key: '1719',
       //   title: 'yo title'
       // });
       //Alert.alert('notification opened fg');
-      
+      return firebase.notifications().removeDeliveredNotification(notification.notificationId);
     });
 
     firebase.notifications().getInitialNotification()
@@ -155,11 +156,10 @@ export default class PostListScreen extends React.Component {
         if (notificationOpen) {
           // App was opened by a notification
           // Get the action triggered by the notification being opened
-          const action = notificationOpen.action;
+          //const action = notificationOpen.action;
           // Get information about the notification that was opened
           const notification: Notification = notificationOpen.notification;  
-          //Alert.alert('notification opened bg');
-          
+          return firebase.notifications().removeDeliveredNotification(notification.notificationId);
         }
       });
 

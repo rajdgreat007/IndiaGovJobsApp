@@ -7,12 +7,14 @@ export const createNotificationForDisplay = (message) => {
         return new firebase.notifications.Notification()
             .setNotificationId(message.messageId)
             .setTitle(data.title)
-            .setBody(data.message)
+            .setBody(data.message || 'India Gov. Jobs')
             .setSound('default')
             .setData({
                 id: data.postId
             })
             .android.setPriority(firebase.notifications.Android.Priority.High)
-            .android.setChannelId('alert');
+            // .android.setSmallIcon("@drawable/ic_stat_work")
+            .android.setColor('#6a5acd')
+            .android.setChannelId('indiagovjobsnotifications');
     }
 }
